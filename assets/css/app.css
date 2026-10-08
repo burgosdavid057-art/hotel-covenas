@@ -1,0 +1,207 @@
+/* ============================================================
+   Hotel Playa Coveñas — sistema unificado
+   "Azure Horizon" · Liquid Glass · Montserrat (sin serif/cursiva)
+   ============================================================ */
+
+:root {
+    --primary:        #005e99;
+    --primary-strong: #0077c0;
+    --primary-deep:   #004a7a;
+    --primary-dim:    #9bcbff;
+    --secondary:      #00658d;
+    --bg:             #f7fafe;
+    --surface:        #ffffff;
+    --surface-low:    #f1f4f8;
+    --surface-cont:   #ebeef2;
+    --ink:            #181c1f;
+    --ink-soft:       #404751;
+    --mute:           #707882;
+    --outline:        #c0c7d2;
+    --inverse:        #1d2a33;   /* footer / barras oscuras */
+    --line:           rgba(24, 28, 31, .10);
+    --shadow:         0 30px 60px -28px rgba(0, 94, 153, .35);
+    --shadow-sm:      0 12px 30px -18px rgba(0, 94, 153, .4);
+    --glass-nav:      rgba(13, 38, 56, .55);
+}
+
+* { box-sizing: border-box; }
+[x-cloak] { display: none !important; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: 'Montserrat', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+}
+
+/* Tipografía — todo Montserrat, SIN serif ni cursiva */
+.font-display, h1, h2, h3, .display { font-family: 'Montserrat', system-ui, sans-serif; }
+h1, h2, h3, .display { color: var(--ink); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; }
+i, em, .italic { font-style: normal !important; }   /* nada de cursiva en ningún lado */
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+
+/* ── Acentos de color ──────────────────────────────────────── */
+.text-coral, .text-oro, .text-mar { color: var(--primary); }
+.text-ocean { color: var(--primary); }
+.text-primary-fixed-dim { color: var(--primary-dim); }
+.rule { height: 4px; width: 64px; border: 0; background: var(--primary); border-radius: 4px; }
+
+/* ── Liquid Glass ──────────────────────────────────────────── */
+.glass-card {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(20px) saturate(135%);
+    -webkit-backdrop-filter: blur(20px) saturate(135%);
+    border: 1px solid rgba(255,255,255,0.7);
+    transition: transform .5s cubic-bezier(.4,0,.2,1), background .5s, box-shadow .5s;
+}
+.glass-card:hover { transform: translateY(-8px) scale(1.01); background: rgba(255,255,255,0.6); box-shadow: 0 30px 60px -15px rgba(0,119,192,0.18); }
+.glass-panel {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.6);
+}
+.booking-glass {
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(26px) saturate(140%);
+    -webkit-backdrop-filter: blur(26px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+.search-bar-shadow { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.45); }
+.hero-overlay { background: linear-gradient(to bottom, rgba(4,20,32,0.62) 0%, rgba(4,20,32,0.28) 45%, rgba(4,20,32,0.78) 100%); }
+
+/* navbar liquid glass */
+.nav-glass {
+    background: var(--glass-nav);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+/* ── Botones ──────────────────────────────────────────────── */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    padding: .9rem 2rem; font-family: 'Montserrat', sans-serif;
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    cursor: pointer; border: 0; border-radius: 999px; line-height: 1; white-space: nowrap;
+    transition: transform .2s ease, box-shadow .2s ease, background-color .2s, color .2s, filter .2s;
+}
+.btn-primary, .btn-mar, .btn-ocean, .btn-coral, .btn-oro {
+    color: #fff; background: var(--primary); box-shadow: 0 12px 28px -14px rgba(0,94,153,.7);
+}
+.btn-primary:hover, .btn-mar:hover, .btn-ocean:hover, .btn-coral:hover, .btn-oro:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 18px 34px -16px rgba(0,94,153,.8); }
+.btn-dark { color:#fff; background: var(--inverse); box-shadow: 0 12px 28px -16px rgba(0,0,0,.5); }
+.btn-dark:hover { background:#000; transform: translateY(-2px); }
+.btn-white, .btn-light { color: var(--primary); background:#fff; box-shadow: var(--shadow-sm); }
+.btn-white:hover, .btn-light:hover { transform: translateY(-2px); }
+.btn-ghost { color: var(--primary); background: transparent; border: 1.5px solid var(--outline); }
+.btn-ghost:hover { border-color: var(--primary); transform: translateY(-2px); }
+.btn-outline-white { color:#fff; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.55); }
+.btn-outline-white:hover { background: rgba(255,255,255,.2); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; box-shadow: none; filter: none; }
+.btn:focus-visible { outline: 3px solid var(--primary-dim); outline-offset: 3px; }
+
+/* ── Superficies ──────────────────────────────────────────── */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+.card-soft { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-sm); }
+.glass { background: rgba(255,255,255,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.6); box-shadow: var(--shadow); }
+
+/* ── Tile / tarjeta de habitación (foto protagonista) ──────── */
+.tile { position: relative; overflow: hidden; border-radius: 28px; background: var(--surface-cont); transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); display:block; }
+.tile:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.tile:hover img { transform: scale(1.06); }
+.tile__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,20,32,.86) 4%, rgba(4,20,32,.25) 45%, transparent 72%); }
+
+.card-room { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow-sm); transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s; }
+.card-room:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.card-room__img { aspect-ratio: 4/3; overflow: hidden; }
+.card-room__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.card-room:hover .card-room__img img { transform: scale(1.06); }
+
+/* ── Badges / chips ───────────────────────────────────────── */
+.badge { display: inline-flex; align-items: center; gap: .3rem; font-size: .64rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: .32rem .7rem; border-radius: 999px; }
+.badge-oferta { color: #fff; background: var(--primary); }
+.badge-mar { color:#fff; background: rgba(255,255,255,.18); backdrop-filter: blur(4px); border:1px solid rgba(255,255,255,.35); }
+.chip { display: inline-flex; align-items: center; gap: .35rem; font-size: .74rem; font-weight: 600; padding: .32rem .7rem; border-radius: 999px; background: var(--surface-cont); color: var(--primary-deep); }
+
+.state { font-size: .65rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: .24rem .62rem; border-radius: 999px; }
+.state-pendiente  { background: #fff0e3; color: #c2521f; }
+.state-confirmada { background: #d8ecfb; color: var(--primary-deep); }
+.state-pagada     { background: #d8f3e2; color: #1d7a45; }
+.state-cancelada  { background: #f7dada; color: #a62a2a; }
+
+/* ── Mapa de habitaciones (estilo cine) ───────────────────── */
+.seat { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 58px; min-height: 58px; padding: .5rem .4rem; border-radius: 14px; border: 2px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; transition: transform .16s ease, background-color .16s, border-color .16s, box-shadow .16s; font-size: .82rem; font-weight: 700; }
+.seat:hover:not(.seat--taken) { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 10px 20px -12px rgba(0,94,153,.6); }
+.seat small { font-size: .56rem; font-weight: 600; color: var(--mute); }
+.seat--sel { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 12px 24px -10px rgba(0,94,153,.7); }
+.seat--sel small { color: rgba(255,255,255,.85); }
+.seat--taken { background: var(--surface-cont); border-color: transparent; color: #9fb0b9; cursor: not-allowed; text-decoration: line-through; }
+.seat:focus-visible { outline: 3px solid var(--primary-dim); outline-offset: 2px; }
+.legend-dot { width: 14px; height: 14px; border-radius: 5px; display: inline-block; vertical-align: -2px; }
+
+/* ── Stepper ──────────────────────────────────────────────── */
+.step-bar { display: flex; align-items: center; gap: .5rem; }
+.step-num { width: 36px; height: 36px; border-radius: 999px; display: grid; place-items: center; font-size: .85rem; font-weight: 800; border: 2px solid var(--line); color: var(--mute); background: #fff; transition: all .25s; flex-shrink: 0; }
+.step--done .step-num { background: var(--primary); border-color: var(--primary); color: #fff; }
+.step--active .step-num { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 0 4px rgba(0,94,153,.16); }
+.step-line { height: 3px; flex: 1; background: var(--line); border-radius: 2px; }
+
+/* ── Marquee ──────────────────────────────────────────────── */
+.marquee { display: flex; overflow: hidden; user-select: none; gap: 0; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee__track { display: flex; flex-shrink: 0; gap: 2.5rem; padding-right: 2.5rem; align-items: center; animation: marquee 36s linear infinite; font-weight: 800; text-transform: uppercase; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* ── Reveal / floating ────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1); }
+.reveal.active { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+.floating { animation: floating 6s ease-in-out infinite; }
+@keyframes floating { 0%{transform:translateY(0)} 50%{transform:translateY(-18px)} 100%{transform:translateY(0)} }
+@media (prefers-reduced-motion: reduce) { .floating { animation: none; } }
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: var(--surface-low); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 8px; border: 2px solid var(--surface-low); }
+::selection { background: var(--primary); color: #fff; }
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+.faq-item { border-bottom: 1px solid var(--line); }
+
+/* ── Inputs ───────────────────────────────────────────────── */
+.field { width: 100%; background: #fff; border: 1.5px solid var(--line); color: var(--ink); padding: .85rem 1rem; border-radius: 14px; transition: border-color .2s, box-shadow .2s; font-size: .95rem; font-family: 'Montserrat', sans-serif; }
+.field::placeholder { color: #93a3ab; }
+.field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,94,153,.14); }
+label.lbl { font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--mute); margin-bottom: .4rem; display: block; font-weight: 700; }
+.field-err { border-color: #e0563f !important; box-shadow: 0 0 0 3px rgba(224,86,63,.12); }
+.counter-btn { width: 40px; height: 40px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; color: var(--primary); display: grid; place-items: center; font-size: 1.15rem; font-weight: 700; transition: all .2s; }
+.counter-btn:hover:not(:disabled) { background: var(--primary); color: #fff; border-color: var(--primary); }
+.counter-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* Barra de reserva: inputs en Montserrat sobre liquid glass */
+.booking-glass .bk-input {
+    background: transparent; border: 0; outline: none; width: 100%;
+    color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem;
+    letter-spacing: .01em; color-scheme: dark;
+}
+.booking-glass .bk-input::-webkit-calendar-picker-indicator { filter: invert(1); opacity: .8; cursor: pointer; }
+.booking-glass select.bk-input option { color: var(--ink); }
+
+/* ── Utilidades ───────────────────────────────────────────── */
+.container-x { max-width: 1280px; margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+.eyebrow { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--primary); font-weight: 800; }
+.link-under { position: relative; }
+.link-under::after { content:""; position:absolute; left:0; bottom:-3px; width:0; height:2px; background: currentColor; transition: width .3s; }
+.link-under:hover::after { width: 100%; }
+a, button { cursor: pointer; }
+.tabular { font-variant-numeric: tabular-nums; }
+.wave-top { display:block; width:100%; height:auto; }
+.aura { display: none; }

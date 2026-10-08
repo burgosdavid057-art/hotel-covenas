@@ -1,0 +1,26 @@
+# Base de datos SQLite (se genera con database/seed.php)
+/data/*.sqlite
+
+# Imágenes subidas desde el admin
+/assets/img/habitaciones/*
+!/assets/img/habitaciones/.gitkeep
+
+# Config local del preview
+/.claude/
+
+# Sistema
+Thumbs.db
+.DS_Store
+
+# --- seguridad (agregado al publicar) ---
+CLAUDE.md
+.claude/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+__pycache__/
+node_modules/
+Thumbs.db
+.DS_Store
